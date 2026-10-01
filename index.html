@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="An audio tech who can spin records. DJ services, live sound, event audio, fundraiser support and event visuals. Streaming coming soon. Call, text or FaceTime (518) 321-0643.">
+  <title>DJ-Jelley Entertainment | DJ, Live Sound &amp; Event Audio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Raleway:wght@600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ff5fa8;
+      --cyan: #5fe6ff;
+      --ink: #07030f;
+      --panel: #110a24;
+      --text: #f4f0ff;
+      --muted: #e7e1f0;
+      --deep: #0a0616;
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after { box-sizing: inherit; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: var(--ink);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .site-wrap {
+      width: min(1080px, calc(100% - 2.4rem));
+      margin-inline: auto;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 4px;
+      border-radius: 7px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 95, 168, 0.28);
+      background: rgba(7, 3, 15, 0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 70px;
+      padding: 0.65rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--pink);
+      text-shadow: 0 0 12px rgba(255, 95, 168, 0.65);
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 42px;
+      flex: 0 0 auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 7px var(--pink));
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+    }
+
+    .main-nav a:not(.action-button) {
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .main-nav a:not(.action-button):hover { color: var(--cyan); }
+
+    .action-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.72rem 1.25rem;
+      border: 2px solid var(--pink);
+      border-radius: 999px;
+      background: var(--pink);
+      color: var(--ink);
+      box-shadow: 0 0 18px rgba(255, 95, 168, 0.5);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      line-height: 1;
+      text-decoration: none;
+      transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .action-button:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .action-button.ghost {
+      border-color: var(--cyan);
+      background: transparent;
+      color: var(--cyan);
+      box-shadow: 0 0 18px rgba(95, 230, 255, 0.28);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 4.6rem 0 4.2rem;
+      text-align: center;
+      background:
+        radial-gradient(70% 60% at 50% 0%, #2a0f55 0%, transparent 70%),
+        radial-gradient(45% 45% at 0% 10%, #0a3a5c 0%, transparent 70%),
+        radial-gradient(45% 45% at 100% 10%, #5a0f4a 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .equalizer {
+      position: absolute;
+      inset: auto 0 0;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 6px;
+      height: 185px;
+      padding: 0 1rem;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .equalizer span {
+      width: 100%;
+      max-width: 26px;
+      height: 100%;
+      border-radius: 5px 5px 0 0;
+      background: linear-gradient(var(--cyan), var(--pink));
+      transform: scaleY(0.28);
+      transform-origin: bottom;
+      animation: pulse-bar 1.65s ease-in-out infinite alternate;
+    }
+
+    .equalizer span:nth-child(3n) { animation-delay: -0.4s; }
+    .equalizer span:nth-child(3n + 1) { animation-delay: -1s; animation-duration: 1.2s; }
+    .equalizer span:nth-child(4n) { animation-delay: -0.8s; animation-duration: 2s; }
+
+    @keyframes pulse-bar {
+      to { transform: scaleY(1); }
+    }
+
+    .hero-mark {
+      width: 126px;
+      height: 126px;
+      object-fit: contain;
+      margin: 0 auto 0.25rem;
+      filter: drop-shadow(0 0 15px var(--pink));
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "Raleway", sans-serif;
+      color: var(--pink);
+      font-size: clamp(3.2rem, 13vw, 7.5rem);
+      font-weight: 800;
+      letter-spacing: -0.07em;
+      line-height: 0.92;
+      text-shadow: 0 0 22px rgba(255, 95, 168, 0.76), 0 0 60px rgba(255, 95, 168, 0.4);
+    }
+
+    .hero-subtitle {
+      margin: 0.25rem 0 0;
+      font-family: "Raleway", sans-serif;
+      color: var(--cyan);
+      font-size: clamp(1.6rem, 6vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      text-shadow: 0 0 18px rgba(95, 230, 255, 0.6);
+    }
+
+    .jam-tagline {
+      margin: 0.5rem 0 0;
+      color: var(--cyan);
+      font-family: "Raleway", sans-serif;
+      font-size: clamp(1.35rem, 4vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      text-shadow: 0 0 14px rgba(95, 230, 255, 0.55);
+    }
+
+    .hero-script {
+      margin: 1.35rem 0 0.35rem;
+      color: #ffb3d6;
+      font-family: "Raleway", sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      font-size: clamp(1.25rem, 4.4vw, 2rem);
+      text-shadow: 0 0 14px rgba(255, 95, 168, 0.58);
+    }
+
+    .hero-lead, .section-intro {
+      max-width: 40rem;
+      color: var(--muted);
+    }
+
+    .hero-lead {
+      margin: 0 auto 1.8rem;
+    }
+
+    .hero-actions, .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .content-section {
+      padding: 4rem 0;
+    }
+
+    .section-heading {
+      margin: 0 0 0.45rem;
+      font-family: "Raleway", sans-serif;
+      color: var(--text);
+      font-size: clamp(1.95rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1.1;
+    }
+
+    .section-intro {
+      margin: 0 0 2rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 1.2rem;
+    }
+
+    .service-card {
+      --accent: var(--pink);
+      min-width: 0;
+      padding: 1.55rem;
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 38%, transparent), inset 0 0 25px color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+
+    .service-card.cyan { --accent: var(--cyan); }
+    .service-card.wide { grid-column: 1 / -1; }
+
+    .service-card h3 {
+      margin: 0 0 0.7rem;
+      color: var(--accent);
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .service-list {
+      display: grid;
+      gap: 0.35rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .wide .service-list {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .service-list li {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .service-list li::before {
+      position: absolute;
+      top: 0.62em;
+      left: 0;
+      width: 0.58rem;
+      height: 0.58rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 9px var(--accent);
+      content: "";
+    }
+
+    .dj-card-intro {
+      max-width: 52rem;
+      margin: 0 0 1.2rem;
+      color: var(--muted);
+    }
+
+    .dj-focus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .dj-focus {
+      padding: 1.15rem;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      background: rgba(7, 3, 15, 0.48);
+    }
+
+    .dj-focus.cyan-focus {
+      border-color: rgba(95, 230, 255, 0.34);
+    }
+
+    .dj-focus h4 {
+      margin: 0 0 0.55rem;
+      color: var(--pink);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .dj-focus.cyan-focus h4 { color: var(--cyan); }
+
+    .dj-focus p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .dj-focus p + p { margin-top: 0.75rem; }
+
+    .party-line {
+      margin: 1.2rem 0 0;
+      padding: 0.95rem 1rem;
+      border-left: 4px solid var(--pink);
+      border-radius: 0 14px 14px 0;
+      background: rgba(255, 95, 168, 0.07);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .party-line strong {
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .bigger-event-note {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(95, 230, 255, 0.32);
+      border-radius: 16px;
+      background: rgba(95, 230, 255, 0.06);
+      color: var(--muted);
+    }
+
+    .bigger-event-note strong { color: var(--cyan); }
+
+    @media (max-width: 760px) {
+      .dj-focus-grid { grid-template-columns: 1fr; }
+    }
+
+    .fundraiser-section {
+      position: relative;
+      border-block: 1px solid rgba(255, 95, 168, 0.22);
+      background:
+        radial-gradient(55% 90% at 0% 50%, rgba(255, 95, 168, 0.11), transparent 72%),
+        radial-gradient(50% 90% at 100% 50%, rgba(95, 230, 255, 0.09), transparent 72%),
+        var(--ink);
+    }
+
+    .fundraiser-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.5rem;
+      padding: clamp(1.5rem, 4vw, 2.4rem);
+      border: 2px solid rgba(255, 95, 168, 0.82);
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(17, 10, 36, 0.98), rgba(10, 6, 22, 0.96));
+      box-shadow: 0 0 28px rgba(255, 95, 168, 0.22), inset 0 0 30px rgba(95, 230, 255, 0.05);
+    }
+
+    .fundraiser-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      padding: 0.38rem 0.68rem;
+      border: 1px solid rgba(95, 230, 255, 0.45);
+      border-radius: 999px;
+      color: var(--cyan);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fundraiser-eyebrow::before {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
+      background: var(--pink);
+      box-shadow: 0 0 9px var(--pink);
+      content: "";
+    }
+
+    .fundraiser-copy .section-heading {
+      color: var(--pink);
+      text-shadow: 0 0 18px rgba(255, 95, 168, 0.35);
+    }
+
+    .fundraiser-copy p {
+      max-width: 44rem;
+      margin: 0 0 1rem;
+      color: var(--muted);
+    }
+
+    .volunteer-note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--cyan);
+      border-radius: 0 14px 14px 0;
+      background: rgba(95, 230, 255, 0.08);
+      color: var(--text);
+    }
+
+    .volunteer-note strong {
+      color: var(--cyan);
+    }
+
+    .fundraiser-help {
+      align-self: stretch;
+      padding: 1.25rem;
+      border: 1px solid rgba(95, 230, 255, 0.38);
+      border-radius: 20px;
+      background: rgba(7, 3, 15, 0.48);
+    }
+
+    .fundraiser-help h3 {
+      margin: 0 0 0.8rem;
+      color: var(--cyan);
+      font-size: 1.15rem;
+    }
+
+    .fundraiser-help .service-list {
+      margin-bottom: 1.2rem;
+    }
+
+    .fundraiser-help .service-list li::before {
+      background: var(--pink);
+      box-shadow: 0 0 9px var(--pink);
+    }
+
+    @media (max-width: 760px) {
+      .fundraiser-panel { grid-template-columns: 1fr; }
+    }
+
+    .tech-section {
+      border-block: 1px solid rgba(95, 230, 255, 0.3);
+      background: linear-gradient(120deg, rgba(95, 230, 255, 0.12), rgba(255, 95, 168, 0.12));
+    }
+
+    .tech-heading-highlight {
+      color: var(--cyan);
+      text-shadow: 0 0 16px rgba(95, 230, 255, 0.6);
+    }
+
+    .booking-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      border: 2px solid var(--pink);
+      border-radius: 26px;
+      background: var(--panel);
+      box-shadow: 0 0 30px rgba(255, 95, 168, 0.38);
+    }
+
+    .booking-mark {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+      filter: drop-shadow(0 0 10px var(--pink));
+    }
+
+    .booking-phone {
+      display: inline-block;
+      margin: 0.35rem 0 1.1rem;
+      color: var(--pink);
+      font-size: clamp(2rem, 7vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      text-decoration: none;
+      text-shadow: 0 0 16px rgba(255, 95, 168, 0.58);
+    }
+
+    .contact-actions { justify-content: flex-start; }
+
+    .quote-form {
+      display: grid;
+      gap: 0.9rem;
+      align-content: start;
+    }
+
+    .form-label {
+      display: grid;
+      gap: 0.32rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border: 2px solid #3a2a63;
+      border-radius: 12px;
+      background: var(--deep);
+      color: var(--text);
+      font: inherit;
+    }
+
+    select { cursor: pointer; }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--cyan);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(95, 230, 255, 0.25);
+    }
+
+    .form-note, .form-status {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .form-status {
+      display: none;
+      padding: 0.72rem 0.85rem;
+      border: 1px solid rgba(95, 230, 255, 0.55);
+      border-radius: 10px;
+      background: rgba(95, 230, 255, 0.08);
+      color: var(--text);
+    }
+
+    .form-status.is-visible { display: block; }
+    .form-status.is-error {
+      border-color: rgba(255, 95, 168, 0.72);
+      background: rgba(255, 95, 168, 0.1);
+    }
+
+    .connect-section {
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 0;
+      border-top: 1px solid rgba(255, 95, 168, 0.18);
+      background:
+        radial-gradient(55% 85% at 15% 100%, rgba(255, 95, 168, 0.12), transparent 70%),
+        radial-gradient(55% 85% at 85% 100%, rgba(95, 230, 255, 0.10), transparent 70%),
+        var(--ink);
+    }
+
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .connect-card {
+      padding: 1.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 22px;
+      background: rgba(17, 10, 36, 0.82);
+      box-shadow: 0 0 26px rgba(255, 95, 168, 0.13);
+    }
+
+    .connect-card.streaming-soon {
+      border-color: rgba(255, 95, 168, 0.42);
+      box-shadow: 0 0 28px rgba(255, 95, 168, 0.18);
+    }
+
+    .connect-eyebrow {
+      margin-bottom: 0.5rem;
+      color: var(--cyan);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .connect-card h2, .connect-card h3 {
+      margin: 0 0 0.65rem;
+      font-family: "Raleway", sans-serif;
+      line-height: 1.1;
+    }
+
+    .connect-card h2 { font-size: clamp(1.9rem, 5vw, 2.7rem); }
+    .connect-card h3 { color: var(--pink); font-size: 1.55rem; }
+
+    .connect-card p {
+      margin: 0;
+      color: #eee9fb;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.06);
+    }
+
+    .connect-card p + p { margin-top: 0.75rem; }
+
+    .inline-link {
+      color: var(--cyan);
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    .inline-link:hover { color: var(--text); }
+
+    .social-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 145px;
+      padding: 0.75rem 1.05rem;
+      border: 2px solid var(--cyan);
+      border-radius: 999px;
+      color: var(--cyan);
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 0 16px rgba(95, 230, 255, 0.22);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .social-link.instagram {
+      border-color: var(--pink);
+      color: var(--pink);
+      box-shadow: 0 0 16px rgba(255, 95, 168, 0.22);
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+
+    .coming-soon-pill {
+      display: inline-flex;
+      margin-bottom: 0.9rem;
+      padding: 0.38rem 0.72rem;
+      border: 1px solid rgba(255, 95, 168, 0.55);
+      border-radius: 999px;
+      background: rgba(255, 95, 168, 0.08);
+      color: #ffb3d6;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .site-footer {
+      padding: 2rem 0 2.5rem;
+      border-top: 1px solid rgba(255, 95, 168, 0.25);
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .footer-brand {
+      color: var(--pink);
+      font-weight: 800;
+    }
+
+    @media (max-width: 640px) {
+      .main-nav a:not(.action-button) { display: none; }
+      .main-nav { gap: 0; }
+      .action-button { padding: 0.7rem 1rem; }
+      .hero { padding-top: 3.8rem; }
+      .booking-panel { padding: 1.4rem; }
+      .contact-actions { justify-content: center; }
+      .booking-copy { text-align: center; }
+      .booking-mark { margin-inline: auto; }
+      .booking-phone { display: block; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .equalizer span { animation: none; transform: scaleY(0.55); }
+      .action-button { transition: none; }
+    }
+  </style>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(7, 3, 15);">
+  <header data-template-id="site-header" class="site-header canva-header" style="background: rgba(7, 3, 15, 0.88);">
+   <div class="site-wrap header-inner"><a href="#top" class="brand canva-link" aria-label="DJ-Jelley Entertainment home"> <img data-template-id="header-logo" class="brand-mark canva-image" loading="lazy" alt="DJ-Jelley pink jellyfish logo" src="dj-jelley-logo.png"><span data-template-id="brand-name" class="brand-name canva-text" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 18px;">DJ-Jelley</span> </a>
+    <nav aria-label="Main navigation" class="main-nav"><a data-template-id="nav-services" class="canva-link" href="#services" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Services</a> <a class="canva-link" href="#fundraisers" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Fundraisers</a> <a data-template-id="nav-tech" class="canva-link" href="#tech" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Tech support</a> <a data-template-id="nav-book" class="canva-link" href="#book" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Book</a> <a data-template-id="nav-call" class="action-button canva-button" href="tel:+15183210643" style="background: rgb(255, 95, 168); color: rgb(7, 3, 15); font-weight: 800; font-style: normal; font-size: 17px;">Call now</a>
+    </nav>
+   </div>
+  </header>
+  <main id="top">
+   <section data-template-id="hero-section" class="hero canva-section" aria-labelledby="hero-title" style="background: radial-gradient(rgb(42, 15, 85), rgba(0, 0, 0, 0));">
+    <div class="equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span> <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span> <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="site-wrap hero-content">
+     <img data-template-id="hero-logo" class="hero-mark canva-image" loading="lazy" alt="DJ-Jelley pink jellyfish logo" src="dj-jelley-logo.png">
+     <h1 id="hero-title" data-template-id="hero-title" class="hero-title canva-text" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 46px;">DJ-Jelley Entertainment</h1>
+     <p class="jam-tagline">Let&rsquo;s Jam!!!</p>
+     <p data-template-id="hero-script" class="hero-script canva-text" style="color: rgb(255, 179, 214); font-weight: 400; font-style: normal; font-size: 21px;">An audio tech who can spin records.</p>
+     <p data-template-id="hero-lead" class="hero-lead canva-text" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 21px;">Music when you want it. Sound when you need it. DJ, live sound, event audio, visuals and practical support for parties, fundraisers and community events.</p>
+     <div class="hero-actions"><a data-template-id="hero-call" class="action-button canva-button" href="tel:+15183210643" style="background: rgb(255, 95, 168); color: rgb(7, 3, 15); font-weight: 800; font-style: normal; font-size: 17px;">Call (518) 321-0643</a> <a data-template-id="hero-book" class="action-button ghost canva-button" href="#book" style="background: transparent; color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">Ask about your date</a>
+     </div>
+    </div>
+   </section>
+   <section id="services" data-template-id="services-section" class="content-section canva-section" aria-labelledby="services-title" style="background: rgb(7, 3, 15);">
+    <div class="site-wrap">
+     <h2 id="services-title" data-template-id="services-title" class="section-heading canva-text" style="color: rgb(244, 240, 255); font-weight: 800; font-style: normal; font-size: 26px;">What I do</h2>
+     <p data-template-id="services-intro" class="section-intro canva-text" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">One person who can run the music and the sound, so you're not juggling a DJ and a separate audio crew.</p>
+     <div class="card-grid">
+      <article data-template-id="dj-card" class="service-card wide canva-card" style="background: rgb(17, 10, 36);">
+       <h3 data-template-id="dj-card-title" class="canva-text" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 25px;">DJ Services &mdash; Small Events, Built for the Room</h3>
+       <p class="dj-card-intro">DJ-Jelley Entertainment is designed primarily for small parties and events of roughly <strong>25&ndash;100 guests</strong>. That range is a practical guideline based on the room, crowd energy, and what the sound system needs to do &mdash; not just a number on a speaker specification sheet.</p>
+       <ul class="service-list canva-list">
+        <li>Private parties &amp; small events</li>
+        <li>Fundraisers &amp; community events</li>
+        <li>Crowd-responsive music</li>
+        <li>Music videos, animations &amp; event visuals</li>
+        <li>Live sound &amp; practical event support</li>
+       </ul>
+       <div class="dj-focus-grid">
+        <div class="dj-focus">
+         <h4>My independent setup</h4>
+         <p>My standard setup uses <strong>two Fender Fighter 12 powered speakers</strong>, LED lighting, and a TV for music videos, animations, and event-specific visuals. I also have additional speakers available when a room needs more coverage.</p>
+         <p>The TV normally faces the guests while I work from a smaller monitor behind the DJ table, giving the event another visual element without taking over the room.</p>
+        </div>
+        <div class="dj-focus cyan-focus">
+         <h4>Visuals are part of the experience</h4>
+         <p>I can use music videos, animated backgrounds, personalized graphics, and other event-specific content to make the setup feel more connected to the people in the room.</p>
+         <p>A projector may be possible when the venue supports it, but lighting conditions matter. The TV is the dependable visual option in my regular setup.</p>
+        </div>
+       </div>
+       <div class="party-line">There&rsquo;s a difference between <strong>hearing the music</strong> and <strong>feeling the party.</strong> As a crowd grows, conversation, cheering, dancing, and room noise begin competing with the system. Larger productions with dedicated subwoofers and more headroom can deliver the extra depth and physical impact a big dance floor needs.</div>
+       <div class="bigger-event-note"><strong>Planning for 100+ guests? Call me anyway.</strong> Bigger events can be handled in different ways depending on the venue, crowd energy, sound coverage, bass, lighting, and the kind of experience you want. Tell me what you&rsquo;re trying to do and I can help you think through the options. If the event needs more than my independent setup is designed to provide, I can still help explain what kind of larger-scale sound, lighting, equipment, or crew support may make sense. <strong>As an independent DJ, I know what I can professionally handle. As a professional, I also know when an event needs to scale up.</strong></div>
+      </article>
+      <article data-template-id="audio-card" class="service-card cyan canva-card" style="background: rgb(17, 10, 36);">
+       <h3 data-template-id="audio-card-title" class="canva-text" style="color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 25px;">Live Sound &amp; Event Audio</h3>
+       <ul class="service-list canva-list">
+        <li data-template-id="audio-item-1" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Sound board operation</li>
+        <li data-template-id="audio-item-2" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Microphones and playback</li>
+        <li data-template-id="audio-item-3" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Level management</li>
+        <li data-template-id="audio-item-4" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Full event audio setup</li>
+       </ul>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section id="fundraisers" class="content-section fundraiser-section" aria-labelledby="fundraiser-title">
+    <div class="site-wrap">
+     <div class="fundraiser-panel">
+      <div class="fundraiser-copy">
+       <div class="fundraiser-eyebrow">Community support</div>
+       <h2 id="fundraiser-title" class="section-heading">Fundraisers &amp; Volunteer Support</h2>
+       <p>Community fundraisers have always been important to DJ-Jelley Entertainment. When my schedule allows, I&rsquo;m happy to volunteer my time to help support a fundraiser &mdash; and that help doesn&rsquo;t necessarily have to begin on event day.</p>
+       <p>With enough advance notice, I may also be available to attend planning meetings and offer practical input on music, sound, event flow, setup, and other details before guests ever arrive.</p>
+       <p>If I&rsquo;m available, I look forward to helping wherever I can &mdash; from planning and setup to audio support, DJ services, and the event itself.</p>
+       <div class="volunteer-note"><strong>Volunteer paperwork required.</strong> For any volunteer involvement, including planning meetings, I require official volunteer paperwork from the organization.</div>
+      </div>
+      <aside class="fundraiser-help" aria-label="Ways DJ-Jelley Entertainment may help with fundraisers">
+       <h3>Ways I may be able to help</h3>
+       <ul class="service-list">
+        <li>Planning meetings &amp; practical event advice</li>
+        <li>Music, sound &amp; event-flow planning</li>
+        <li>Setup and event-day support</li>
+        <li>DJ and live-audio support</li>
+       </ul>
+       <a class="action-button ghost" href="#book">Talk about a fundraiser</a>
+      </aside>
+     </div>
+    </div>
+   </section>
+   <section id="tech" data-template-id="tech-section" class="content-section tech-section canva-section" aria-labelledby="tech-heading" style="background: linear-gradient(120deg, rgba(95, 230, 255, 0.12), rgba(255, 95, 168, 0.12));">
+    <div class="site-wrap">
+     <h2 id="tech-heading" class="section-heading">Practical <span data-template-id="tech-title-highlight" class="tech-heading-highlight canva-text" style="color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">tech support</span></h2>
+     <p data-template-id="tech-intro" class="section-intro canva-text" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">Things go sideways at events. The show keeps moving because there's a backup and someone who knows how to fix it.</p>
+     <div class="card-grid">
+      <article data-template-id="playback-card" class="service-card cyan canva-card" style="background: rgb(17, 10, 36);">
+       <h3 data-template-id="playback-card-title" class="canva-text" style="color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 25px;">Playback, any way you have it</h3>
+       <ul class="service-list canva-list">
+        <li data-template-id="playback-item-1" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Bluetooth</li>
+        <li data-template-id="playback-item-2" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">USB and flash drive</li>
+        <li data-template-id="playback-item-3" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">CD</li>
+        <li data-template-id="playback-item-4" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Backup media options</li>
+       </ul>
+      </article>
+      <article data-template-id="spot-card" class="service-card cyan canva-card" style="background: rgb(17, 10, 36);">
+       <h3 data-template-id="spot-card-title" class="canva-text" style="color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 25px;">On the spot</h3>
+       <p data-template-id="spot-card-copy" class="canva-text" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">Troubleshooting while the event is running, so a dead mic or a dropped connection doesn't stop the night.</p>
+      </article>
+      <article class="service-card wide canva-card" style="background: rgb(17, 10, 36);">
+       <h3 style="color: rgb(255, 95, 168); font-weight: 800; font-size: 25px;">Hands-on Live Audio Experience</h3>
+       <p class="dj-card-intro">My live-audio experience comes from working real events in very different environments. I&rsquo;ve handled unscripted open-mic situations, supported theater and production audio, and worked sound in organized school and community settings.</p>
+       <div class="dj-focus-grid">
+        <div class="dj-focus">
+         <h4>Open Mic &amp; Unscripted Events</h4>
+         <p>Open mic keeps you on your toes because not everything is planned. Performers may handle microphones differently, unexpected pops or feedback can happen, and problems need to be caught before they interrupt the room.</p>
+         <p>That means watching microphones and levels, muting when needed, correcting feedback quickly, and helping direct people on stage when the audio setup needs a little guidance.</p>
+        </div>
+        <div class="dj-focus cyan-focus">
+         <h4>Theater &amp; Production Audio</h4>
+         <p>Theater audio is a different discipline: preparation comes first. My experience includes microphone setup, cable organization, labeling, checking that equipment is powered and ready, and waiting for the cue just like the rest of the production team.</p>
+         <p>Those two environments taught me both sides of event audio: how to prepare carefully when everything is planned, and how to react quickly when it isn&rsquo;t.</p>
+        </div>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section id="book" data-template-id="booking-section" class="content-section canva-section" aria-labelledby="booking-title" style="background: rgb(7, 3, 15);">
+    <div class="site-wrap">
+     <div data-template-id="booking-panel" class="booking-panel canva-panel" style="background: rgb(17, 10, 36);">
+      <div class="booking-copy">
+       <img data-template-id="booking-logo" class="booking-mark canva-image" loading="lazy" alt="DJ-Jelley pink jellyfish logo" src="dj-jelley-logo.png">
+       <h2 id="booking-title" data-template-id="booking-title" class="section-heading canva-text" style="color: rgb(244, 240, 255); font-weight: 800; font-style: normal; font-size: 26px;">Book your event</h2>
+       <p data-template-id="booking-intro" class="section-intro canva-text" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">Call, text or FaceTime. No forms to wait on.</p><a data-template-id="booking-phone" class="booking-phone canva-link" href="tel:+15183210643" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 17px;">(518) 321-0643</a>
+       <div class="contact-actions"><a data-template-id="booking-call" class="action-button canva-button" href="tel:+15183210643" style="background: rgb(255, 95, 168); color: rgb(7, 3, 15); font-weight: 800; font-style: normal; font-size: 17px;">Call</a> <a data-template-id="booking-text" class="action-button ghost canva-button" href="sms:+15183210643" style="background: transparent; color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">Text</a> <a data-template-id="booking-facetime" class="action-button ghost canva-button" href="facetime:+15183210643" style="background: transparent; color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">FaceTime</a>
+       </div>
+      </div>
+      <form id="quote-form" class="quote-form" novalidate=""><label class="form-label" for="quote-name"> <span data-template-id="name-label" class="canva-text" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Your name</span> <input id="quote-name" data-template-id="name-input" class="canva-input" name="name" type="text" autocomplete="name" required="" placeholder="Enter your name" style="background: rgb(10, 6, 22); color: rgb(244, 240, 255); font-weight: 400; font-style: normal; font-size: 17px;"> </label> <label class="form-label" for="quote-need"> <span data-template-id="need-label" class="canva-text" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">What do you need?</span> <select id="quote-need" name="need"> <option data-template-id="need-option-1" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">DJ / small event</option> <option data-template-id="need-option-2" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Live sound / event audio</option> <option class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Fundraiser / volunteer support</option> <option data-template-id="need-option-4" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Tech support</option> <option data-template-id="need-option-5" class="canva-text" style="font-weight: 400; font-style: normal; font-size: 17px;">Not sure yet</option> </select> </label> <label class="form-label" for="quote-date"> <span data-template-id="date-label" class="canva-text" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Event date</span> <input id="quote-date" data-template-id="date-input" class="canva-input" name="date" type="text" placeholder="e.g. Oct 18" style="background: rgb(10, 6, 22); color: rgb(244, 240, 255); font-weight: 400; font-style: normal; font-size: 17px;"> </label> <label class="form-label" for="quote-details"> <span data-template-id="details-label" class="canva-text" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Details</span> <textarea id="quote-details" data-template-id="details-input" class="canva-input" name="details" style="background: rgb(10, 6, 22); color: rgb(244, 240, 255); font-weight: 400; font-style: normal; font-size: 17px;">Type of event, rough guest count, venue</textarea> </label> <button data-template-id="submit-button" class="action-button canva-button" type="submit" style="background: rgb(255, 95, 168); color: rgb(7, 3, 15); font-weight: 800; font-style: normal; font-size: 17px;">Text my request</button>
+       <p data-template-id="form-note" class="form-note canva-text" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">This opens your messaging app with everything filled in. Nothing is sent until you press send.</p>
+       <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+     </div>
+    </div>
+   </section>
+  </main>
+  <section id="connect" class="connect-section" aria-labelledby="connect-title">
+   <div class="site-wrap">
+    <div class="connect-grid">
+     <div class="connect-card">
+      <div class="connect-eyebrow">Follow what&rsquo;s new</div>
+      <h2 id="connect-title">Stay connected with DJ-Jelley Entertainment</h2>
+      <p>DJ-Jelley Entertainment is growing, and Facebook and Instagram are where I&rsquo;ll be sharing updates, event moments, visuals, music, and what&rsquo;s coming next.</p>
+      <div class="social-actions">
+       <a class="social-link" href="https://www.facebook.com/profile.php?id=61594600844757" target="_blank" rel="noopener noreferrer" aria-label="DJ-Jelley Entertainment on Facebook">Facebook</a>
+       <a class="social-link instagram" href="https://www.instagram.com/djjelleyentertainment" target="_blank" rel="noopener noreferrer" aria-label="DJ-Jelley Entertainment on Instagram">Instagram</a>
+      </div>
+     </div>
+     <div class="connect-card streaming-soon">
+      <div class="coming-soon-pill">Coming soon</div>
+      <h3>Streaming</h3>
+      <p>Streaming is part of the next stage for DJ-Jelley Entertainment. I&rsquo;m still finishing the business and technical setup so I can launch it the right way.</p>
+      <p><strong>We look forward to seeing you there.</strong></p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <footer data-template-id="site-footer" class="site-footer canva-footer" style="background: rgb(7, 3, 15); color: rgb(231, 225, 240);">
+   <div class="site-wrap"><strong data-template-id="footer-brand" class="footer-brand canva-text" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 17px;">DJ-Jelley Entertainment</strong> <span aria-hidden="true"> · </span> <span data-template-id="footer-services" class="canva-text" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">DJ · Live Sound · Event Audio · Streaming Coming Soon</span> <br><span data-template-id="footer-phone" class="canva-text" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">(518) 321-0643</span>
+   </div>
+  </footer>
+  <script>
+    (function () {
+      const quoteForm = document.getElementById("quote-form");
+      const nameInput = document.getElementById("quote-name");
+      const status = document.getElementById("form-status");
+
+      function showStatus(message, isError) {
+        status.textContent = message;
+        status.classList.add("is-visible");
+        status.classList.toggle("is-error", Boolean(isError));
+      }
+
+      quoteForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (!nameInput.value.trim()) {
+          nameInput.focus();
+          showStatus("Please enter your name before opening your text message.", true);
+          return;
+        }
+
+        const formData = new FormData(quoteForm);
+        const name = formData.get("name").trim();
+        const need = formData.get("need");
+        const date = formData.get("date").trim();
+        const details = formData.get("details").trim();
+
+        let message = "Hi DJ-Jelley, this is " + name + ". I need: " + need + ".";
+        if (date) message += " Date: " + date + ".";
+        if (details) message += " Details: " + details;
+
+        const smsUrl = "sms:+15183210643?&body=" + encodeURIComponent(message);
+        const openedWindow = window.open(smsUrl, "_blank");
+
+        if (!openedWindow) {
+          showStatus("Your messaging app could not be opened here. Please text (518) 321-0643 and paste your request.", true);
+        } else {
+          showStatus("Your messaging app is opening with your request filled in.");
+        }
+      });
+    })();
+  </script>
+ 
+</body></html>

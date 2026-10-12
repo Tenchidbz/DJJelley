@@ -1,0 +1,1093 @@
+<!--
+DJ-Jelley Entertainment website update — 2026-10-11
+For Bill: this is a drop-in replacement for index.html.
+It preserves the existing visual style and local logo reference: dj-jelley-logo.png
+Main changes: 2027 service ladder, reservation policy, service-hour/overtime rules,
+weekend minimums, setup-access language, updated booking choices, and public
+availability calendar section using djjelleyentertainment@gmail.com.
+If the Google Calendar frame does not display publicly, verify Google Calendar
+sharing/public visibility. The page includes a fallback calendar link.
+--><!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="DJ-Jelley Entertainment: audio technician, venue DJ, full DJ service, live sound, event audio, fundraiser support and event visuals. Check availability and call, text or FaceTime (518) 321-0643." name="description"/>
+<title>DJ-Jelley Entertainment | DJ, Audio Technician &amp; Event Sound</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Raleway:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --pink: #ff5fa8;
+      --cyan: #5fe6ff;
+      --ink: #07030f;
+      --panel: #110a24;
+      --text: #f4f0ff;
+      --muted: #e7e1f0;
+      --deep: #0a0616;
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after { box-sizing: inherit; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: var(--ink);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .site-wrap {
+      width: min(1080px, calc(100% - 2.4rem));
+      margin-inline: auto;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 4px;
+      border-radius: 7px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 95, 168, 0.28);
+      background: rgba(7, 3, 15, 0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 70px;
+      padding: 0.65rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--pink);
+      text-shadow: 0 0 12px rgba(255, 95, 168, 0.65);
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 42px;
+      flex: 0 0 auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 7px var(--pink));
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+    }
+
+    .main-nav a:not(.action-button) {
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .main-nav a:not(.action-button):hover { color: var(--cyan); }
+
+    .action-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.72rem 1.25rem;
+      border: 2px solid var(--pink);
+      border-radius: 999px;
+      background: var(--pink);
+      color: var(--ink);
+      box-shadow: 0 0 18px rgba(255, 95, 168, 0.5);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      line-height: 1;
+      text-decoration: none;
+      transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .action-button:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .action-button.ghost {
+      border-color: var(--cyan);
+      background: transparent;
+      color: var(--cyan);
+      box-shadow: 0 0 18px rgba(95, 230, 255, 0.28);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 4.6rem 0 4.2rem;
+      text-align: center;
+      background:
+        radial-gradient(70% 60% at 50% 0%, #2a0f55 0%, transparent 70%),
+        radial-gradient(45% 45% at 0% 10%, #0a3a5c 0%, transparent 70%),
+        radial-gradient(45% 45% at 100% 10%, #5a0f4a 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .equalizer {
+      position: absolute;
+      inset: auto 0 0;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 6px;
+      height: 185px;
+      padding: 0 1rem;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .equalizer span {
+      width: 100%;
+      max-width: 26px;
+      height: 100%;
+      border-radius: 5px 5px 0 0;
+      background: linear-gradient(var(--cyan), var(--pink));
+      transform: scaleY(0.28);
+      transform-origin: bottom;
+      animation: pulse-bar 1.65s ease-in-out infinite alternate;
+    }
+
+    .equalizer span:nth-child(3n) { animation-delay: -0.4s; }
+    .equalizer span:nth-child(3n + 1) { animation-delay: -1s; animation-duration: 1.2s; }
+    .equalizer span:nth-child(4n) { animation-delay: -0.8s; animation-duration: 2s; }
+
+    @keyframes pulse-bar {
+      to { transform: scaleY(1); }
+    }
+
+    .hero-mark {
+      width: 126px;
+      height: 126px;
+      object-fit: contain;
+      margin: 0 auto 0.25rem;
+      filter: drop-shadow(0 0 15px var(--pink));
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "Raleway", sans-serif;
+      color: var(--pink);
+      font-size: clamp(3.2rem, 13vw, 7.5rem);
+      font-weight: 800;
+      letter-spacing: -0.07em;
+      line-height: 0.92;
+      text-shadow: 0 0 22px rgba(255, 95, 168, 0.76), 0 0 60px rgba(255, 95, 168, 0.4);
+    }
+
+    .hero-subtitle {
+      margin: 0.25rem 0 0;
+      font-family: "Raleway", sans-serif;
+      color: var(--cyan);
+      font-size: clamp(1.6rem, 6vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      text-shadow: 0 0 18px rgba(95, 230, 255, 0.6);
+    }
+
+    .jam-tagline {
+      margin: 0.5rem 0 0;
+      color: var(--cyan);
+      font-family: "Raleway", sans-serif;
+      font-size: clamp(1.35rem, 4vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      text-shadow: 0 0 14px rgba(95, 230, 255, 0.55);
+    }
+
+    .hero-script {
+      margin: 1.35rem 0 0.35rem;
+      color: #ffb3d6;
+      font-family: "Raleway", sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      font-size: clamp(1.25rem, 4.4vw, 2rem);
+      text-shadow: 0 0 14px rgba(255, 95, 168, 0.58);
+    }
+
+    .hero-lead, .section-intro {
+      max-width: 40rem;
+      color: var(--muted);
+    }
+
+    .hero-lead {
+      margin: 0 auto 1.8rem;
+    }
+
+    .hero-actions, .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .content-section {
+      padding: 4rem 0;
+    }
+
+    .section-heading {
+      margin: 0 0 0.45rem;
+      font-family: "Raleway", sans-serif;
+      color: var(--text);
+      font-size: clamp(1.95rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1.1;
+    }
+
+    .section-intro {
+      margin: 0 0 2rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 1.2rem;
+    }
+
+    .service-card {
+      --accent: var(--pink);
+      min-width: 0;
+      padding: 1.55rem;
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 38%, transparent), inset 0 0 25px color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+
+    .service-card.cyan { --accent: var(--cyan); }
+    .service-card.wide { grid-column: 1 / -1; }
+
+    .service-card h3 {
+      margin: 0 0 0.7rem;
+      color: var(--accent);
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .service-list {
+      display: grid;
+      gap: 0.35rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .wide .service-list {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .service-list li {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .service-list li::before {
+      position: absolute;
+      top: 0.62em;
+      left: 0;
+      width: 0.58rem;
+      height: 0.58rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 9px var(--accent);
+      content: "";
+    }
+
+    .dj-card-intro {
+      max-width: 52rem;
+      margin: 0 0 1.2rem;
+      color: var(--muted);
+    }
+
+    .dj-focus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .dj-focus {
+      padding: 1.15rem;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      background: rgba(7, 3, 15, 0.48);
+    }
+
+    .dj-focus.cyan-focus {
+      border-color: rgba(95, 230, 255, 0.34);
+    }
+
+    .dj-focus h4 {
+      margin: 0 0 0.55rem;
+      color: var(--pink);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .dj-focus.cyan-focus h4 { color: var(--cyan); }
+
+    .dj-focus p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .dj-focus p + p { margin-top: 0.75rem; }
+
+    .party-line {
+      margin: 1.2rem 0 0;
+      padding: 0.95rem 1rem;
+      border-left: 4px solid var(--pink);
+      border-radius: 0 14px 14px 0;
+      background: rgba(255, 95, 168, 0.07);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .party-line strong {
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .bigger-event-note {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(95, 230, 255, 0.32);
+      border-radius: 16px;
+      background: rgba(95, 230, 255, 0.06);
+      color: var(--muted);
+    }
+
+    .bigger-event-note strong { color: var(--cyan); }
+
+    @media (max-width: 760px) {
+      .dj-focus-grid { grid-template-columns: 1fr; }
+    }
+
+    .fundraiser-section {
+      position: relative;
+      border-block: 1px solid rgba(255, 95, 168, 0.22);
+      background:
+        radial-gradient(55% 90% at 0% 50%, rgba(255, 95, 168, 0.11), transparent 72%),
+        radial-gradient(50% 90% at 100% 50%, rgba(95, 230, 255, 0.09), transparent 72%),
+        var(--ink);
+    }
+
+    .fundraiser-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.5rem;
+      padding: clamp(1.5rem, 4vw, 2.4rem);
+      border: 2px solid rgba(255, 95, 168, 0.82);
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(17, 10, 36, 0.98), rgba(10, 6, 22, 0.96));
+      box-shadow: 0 0 28px rgba(255, 95, 168, 0.22), inset 0 0 30px rgba(95, 230, 255, 0.05);
+    }
+
+    .fundraiser-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      padding: 0.38rem 0.68rem;
+      border: 1px solid rgba(95, 230, 255, 0.45);
+      border-radius: 999px;
+      color: var(--cyan);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fundraiser-eyebrow::before {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
+      background: var(--pink);
+      box-shadow: 0 0 9px var(--pink);
+      content: "";
+    }
+
+    .fundraiser-copy .section-heading {
+      color: var(--pink);
+      text-shadow: 0 0 18px rgba(255, 95, 168, 0.35);
+    }
+
+    .fundraiser-copy p {
+      max-width: 44rem;
+      margin: 0 0 1rem;
+      color: var(--muted);
+    }
+
+    .volunteer-note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--cyan);
+      border-radius: 0 14px 14px 0;
+      background: rgba(95, 230, 255, 0.08);
+      color: var(--text);
+    }
+
+    .volunteer-note strong {
+      color: var(--cyan);
+    }
+
+    .fundraiser-help {
+      align-self: stretch;
+      padding: 1.25rem;
+      border: 1px solid rgba(95, 230, 255, 0.38);
+      border-radius: 20px;
+      background: rgba(7, 3, 15, 0.48);
+    }
+
+    .fundraiser-help h3 {
+      margin: 0 0 0.8rem;
+      color: var(--cyan);
+      font-size: 1.15rem;
+    }
+
+    .fundraiser-help .service-list {
+      margin-bottom: 1.2rem;
+    }
+
+    .fundraiser-help .service-list li::before {
+      background: var(--pink);
+      box-shadow: 0 0 9px var(--pink);
+    }
+
+    @media (max-width: 760px) {
+      .fundraiser-panel { grid-template-columns: 1fr; }
+    }
+
+    .tech-section {
+      border-block: 1px solid rgba(95, 230, 255, 0.3);
+      background: linear-gradient(120deg, rgba(95, 230, 255, 0.12), rgba(255, 95, 168, 0.12));
+    }
+
+    .tech-heading-highlight {
+      color: var(--cyan);
+      text-shadow: 0 0 16px rgba(95, 230, 255, 0.6);
+    }
+
+    .booking-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      border: 2px solid var(--pink);
+      border-radius: 26px;
+      background: var(--panel);
+      box-shadow: 0 0 30px rgba(255, 95, 168, 0.38);
+    }
+
+    .booking-mark {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+      filter: drop-shadow(0 0 10px var(--pink));
+    }
+
+    .booking-phone {
+      display: inline-block;
+      margin: 0.35rem 0 1.1rem;
+      color: var(--pink);
+      font-size: clamp(2rem, 7vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      text-decoration: none;
+      text-shadow: 0 0 16px rgba(255, 95, 168, 0.58);
+    }
+
+    .contact-actions { justify-content: flex-start; }
+
+    .quote-form {
+      display: grid;
+      gap: 0.9rem;
+      align-content: start;
+    }
+
+    .form-label {
+      display: grid;
+      gap: 0.32rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border: 2px solid #3a2a63;
+      border-radius: 12px;
+      background: var(--deep);
+      color: var(--text);
+      font: inherit;
+    }
+
+    select { cursor: pointer; }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--cyan);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(95, 230, 255, 0.25);
+    }
+
+    .form-note, .form-status {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .form-status {
+      display: none;
+      padding: 0.72rem 0.85rem;
+      border: 1px solid rgba(95, 230, 255, 0.55);
+      border-radius: 10px;
+      background: rgba(95, 230, 255, 0.08);
+      color: var(--text);
+    }
+
+    .form-status.is-visible { display: block; }
+    .form-status.is-error {
+      border-color: rgba(255, 95, 168, 0.72);
+      background: rgba(255, 95, 168, 0.1);
+    }
+
+    .connect-section {
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 0;
+      border-top: 1px solid rgba(255, 95, 168, 0.18);
+      background:
+        radial-gradient(55% 85% at 15% 100%, rgba(255, 95, 168, 0.12), transparent 70%),
+        radial-gradient(55% 85% at 85% 100%, rgba(95, 230, 255, 0.10), transparent 70%),
+        var(--ink);
+    }
+
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .connect-card {
+      padding: 1.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 22px;
+      background: rgba(17, 10, 36, 0.82);
+      box-shadow: 0 0 26px rgba(255, 95, 168, 0.13);
+    }
+
+    .connect-card.streaming-soon {
+      border-color: rgba(255, 95, 168, 0.42);
+      box-shadow: 0 0 28px rgba(255, 95, 168, 0.18);
+    }
+
+    .connect-eyebrow {
+      margin-bottom: 0.5rem;
+      color: var(--cyan);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .connect-card h2, .connect-card h3 {
+      margin: 0 0 0.65rem;
+      font-family: "Raleway", sans-serif;
+      line-height: 1.1;
+    }
+
+    .connect-card h2 { font-size: clamp(1.9rem, 5vw, 2.7rem); }
+    .connect-card h3 { color: var(--pink); font-size: 1.55rem; }
+
+    .connect-card p {
+      margin: 0;
+      color: #eee9fb;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.06);
+    }
+
+    .connect-card p + p { margin-top: 0.75rem; }
+
+    .inline-link {
+      color: var(--cyan);
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    .inline-link:hover { color: var(--text); }
+
+    .social-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 145px;
+      padding: 0.75rem 1.05rem;
+      border: 2px solid var(--cyan);
+      border-radius: 999px;
+      color: var(--cyan);
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 0 16px rgba(95, 230, 255, 0.22);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .social-link.instagram {
+      border-color: var(--pink);
+      color: var(--pink);
+      box-shadow: 0 0 16px rgba(255, 95, 168, 0.22);
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+
+    .coming-soon-pill {
+      display: inline-flex;
+      margin-bottom: 0.9rem;
+      padding: 0.38rem 0.72rem;
+      border: 1px solid rgba(255, 95, 168, 0.55);
+      border-radius: 999px;
+      background: rgba(255, 95, 168, 0.08);
+      color: #ffb3d6;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .site-footer {
+      padding: 2rem 0 2.5rem;
+      border-top: 1px solid rgba(255, 95, 168, 0.25);
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .footer-brand {
+      color: var(--pink);
+      font-weight: 800;
+    }
+
+    @media (max-width: 640px) {
+      .main-nav a:not(.action-button) { display: none; }
+      .main-nav { gap: 0; }
+      .action-button { padding: 0.7rem 1rem; }
+      .hero { padding-top: 3.8rem; }
+      .booking-panel { padding: 1.4rem; }
+      .contact-actions { justify-content: center; }
+      .booking-copy { text-align: center; }
+      .booking-mark { margin-inline: auto; }
+      .booking-phone { display: block; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .equalizer span { animation: none; transform: scaleY(0.55); }
+      .action-button { transition: none; }
+    }
+  
+
+    .rate-kicker {
+      margin: 0 0 0.25rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .rate-price {
+      margin: 0.2rem 0 0.85rem;
+      color: var(--text);
+      font-size: clamp(1.55rem, 4vw, 2.15rem);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .rate-price span {
+      color: var(--cyan);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .calendar-shell {
+      overflow: hidden;
+      border: 2px solid var(--cyan);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 0 24px rgba(95, 230, 255, 0.24);
+    }
+
+    .calendar-shell iframe {
+      display: block;
+      width: 100%;
+      min-height: 680px;
+      border: 0;
+      background: #fff;
+    }
+
+    .availability-note {
+      margin-top: 1rem;
+      padding: 1rem 1.15rem;
+      border-left: 4px solid var(--pink);
+      border-radius: 10px;
+      background: rgba(255, 95, 168, 0.08);
+      color: var(--muted);
+    }
+
+    .compact-note {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 720px) {
+      .calendar-shell iframe { min-height: 560px; }
+    }
+</style>
+</head>
+<body data-template-id="__page-root" style="background: rgb(7, 3, 15);">
+<header class="site-header canva-header" data-template-id="site-header" style="background: rgba(7, 3, 15, 0.88);">
+<div class="site-wrap header-inner"><a aria-label="DJ-Jelley Entertainment home" class="brand canva-link" href="#top"> <img alt="DJ-Jelley pink jellyfish logo" class="brand-mark canva-image" data-template-id="header-logo" loading="lazy" src="dj-jelley-logo.png"/><span class="brand-name canva-text" data-template-id="brand-name" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 18px;">DJ-Jelley</span> </a>
+<nav aria-label="Main navigation" class="main-nav"><a class="canva-link" data-template-id="nav-services" href="#services" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Services</a> <a class="canva-link" href="#rates" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Rates</a> <a class="canva-link" href="#fundraisers" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Fundraisers</a> <a class="canva-link" data-template-id="nav-tech" href="#tech" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Tech support</a> <a class="canva-link" href="#availability" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Availability</a><a class="canva-link" data-template-id="nav-book" href="#book" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Book</a> <a class="action-button canva-button" data-template-id="nav-call" href="tel:+15183210643" style="background: rgb(255, 95, 168); color: rgb(7, 3, 15); font-weight: 800; font-style: normal; font-size: 17px;">Call now</a>
+</nav>
+</div>
+</header>
+<main id="top">
+<section aria-labelledby="hero-title" class="hero canva-section" data-template-id="hero-section" style="background: radial-gradient(rgb(42, 15, 85), rgba(0, 0, 0, 0));">
+<div aria-hidden="true" class="equalizer"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span> <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span> <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+<div class="site-wrap hero-content">
+<img alt="DJ-Jelley pink jellyfish logo" class="hero-mark canva-image" data-template-id="hero-logo" loading="lazy" src="dj-jelley-logo.png"/>
+<h1 class="hero-title canva-text" data-template-id="hero-title" id="hero-title" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 46px;">DJ-Jelley Entertainment</h1>
+<p class="jam-tagline">Let’s Jam!!!</p>
+<p class="hero-script canva-text" data-template-id="hero-script" style="color: rgb(255, 179, 214); font-weight: 400; font-style: normal; font-size: 21px;">An audio tech who can spin records.</p>
+<p class="hero-lead canva-text" data-template-id="hero-lead" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 21px;">Music when you need a DJ. Sound when you need a technician. Full production when you need both.</p>
+<div class="hero-actions"><a class="action-button canva-button" data-template-id="hero-call" href="tel:+15183210643" style="background: rgb(255, 95, 168); color: rgb(7, 3, 15); font-weight: 800; font-style: normal; font-size: 17px;">Call (518) 321-0643</a> <a class="action-button ghost canva-button" data-template-id="hero-book" href="#book" style="background: transparent; color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">Ask about your date</a>
+<a class="action-button ghost canva-button" href="#availability" style="background: transparent; color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">Check availability</a></div>
+</div>
+</section>
+<section aria-labelledby="services-title" class="content-section canva-section" id="services" style="background: rgb(7, 3, 15);">
+<div class="site-wrap">
+<h2 class="section-heading" id="services-title" style="color: rgb(244, 240, 255); font-weight: 800; font-size: 26px;">Choose the level of support you need</h2>
+<p class="section-intro" style="color: rgb(231, 225, 240); font-weight: 400; font-size: 17px;">I can work with the audio system you already have, DJ through a venue’s working PA, or bring a complete independent DJ setup.</p>
+<div class="card-grid">
+<article class="service-card cyan canva-card" style="background: rgb(17, 10, 36);">
+<div class="rate-kicker">Your equipment · My hands and experience</div>
+<h3 style="color: rgb(95, 230, 255);">Audio Technician</h3>
+<p class="rate-price">$40/hour</p>
+<ul class="service-list">
+<li>Home, venue and event-audio setup</li>
+<li>Soundboard operation, microphones and playback</li>
+<li>Level management, routing and troubleshooting</li>
+<li>Practical setup help for compatible audio and streaming equipment</li>
+</ul>
+<p class="compact-note">A free initial assessment may be available when our schedules line up. If the visit turns into hands-on troubleshooting, repair, routing, configuration or cable tracing, I’ll explain the paid scope before work continues.</p>
+</article>
+<article class="service-card canva-card" style="background: rgb(17, 10, 36);">
+<div class="rate-kicker">Venue PA · My DJ system</div>
+<h3 style="color: rgb(255, 95, 168);">House-PA / Venue DJ</h3>
+<p class="rate-price">$50/hour</p>
+<p>The venue supplies a working PA, suitable workspace/table and power. I bring the DJ controller, computer, music library, adapters/cables and a small tabletop presentation setup.</p>
+<ul class="service-list">
+<li>Crowd-responsive music and live mixing</li>
+<li>Good fit for restaurants, bars and venues with an installed sound system</li>
+<li>I can assess the venue PA ahead of time when mutually available</li>
+</ul>
+</article>
+<article class="service-card wide canva-card" style="background: rgb(17, 10, 36);">
+<div class="rate-kicker">Complete independent event setup</div>
+<h3 style="color: rgb(255, 95, 168);">Full DJ Service</h3>
+<p class="rate-price">$100/hour</p>
+<p>I bring the event-production system: DJ equipment, PA, lighting, visuals and the setup/teardown work that goes with it.</p>
+<div class="dj-focus-grid">
+<div class="dj-focus">
+<h4>Small events, built for the room</h4>
+<p>My independent setup is designed primarily around parties and events of roughly <strong>25–100 guests</strong>. Room size, crowd energy and the kind of experience you want matter more than a simple head count.</p>
+</div>
+<div class="dj-focus cyan-focus">
+<h4>Visuals are part of the experience</h4>
+<p>Music videos, animated backgrounds, personalized graphics and event-specific content can be used when the room and setup support it.</p>
+</div>
+</div>
+<div class="bigger-event-note"><strong>Planning for 100+ guests or a wedding?</strong> Call me anyway. Larger events can require more equipment, coverage or crew support. Weddings are important events, and I do not perform them alone.</div>
+</article>
+</div>
+</div>
+</section>
+<section aria-labelledby="rates-title" class="content-section canva-section" id="rates" style="background: linear-gradient(120deg, rgba(255, 95, 168, 0.08), rgba(95, 230, 255, 0.08));">
+<div class="site-wrap">
+<h2 class="section-heading" id="rates-title" style="color: rgb(244, 240, 255); font-weight: 800; font-size: 26px;">Rates &amp; Booking</h2>
+<p class="section-intro" style="color: rgb(231, 225, 240); font-weight: 400; font-size: 17px;">Simple hourly pricing, a clear date-reservation fee, and event-day rules designed to keep expectations clear before the music starts.</p>
+<div class="card-grid">
+<article class="service-card wide canva-card" style="background: rgb(17, 10, 36);">
+<h3 style="color: rgb(255, 95, 168);">Reserve Your Date — $100</h3>
+<p><strong>A $100 non-refundable date-reservation fee holds the agreed date for your scheduled service.</strong> The reservation fee is separate from hourly service charges.</p>
+<p>Until the reservation is completed, conversations, estimates and free assessments do not hold a date.</p>
+</article>
+<article class="service-card cyan canva-card" style="background: rgb(17, 10, 36);">
+<h3 style="color: rgb(95, 230, 255);">Monday–Friday</h3>
+<p><strong>Audio Technician:</strong> no service minimum.</p>
+<p><strong>House-PA / Venue DJ:</strong> no service minimum.</p>
+<p>Friday stays flexible so a restaurant, bar or venue can book the time it actually needs.</p>
+</article>
+<article class="service-card canva-card" style="background: rgb(17, 10, 36);">
+<h3 style="color: rgb(255, 95, 168);">Saturday–Sunday</h3>
+<p><strong>Audio Technician:</strong> normally unavailable. Exceptions may be considered when the event calendar allows.</p>
+<p><strong>House-PA / Venue DJ:</strong> 4-hour minimum.</p>
+<p><strong>Full DJ Service:</strong> 3-hour minimum.</p>
+</article>
+<article class="service-card cyan canva-card" style="background: rgb(17, 10, 36);">
+<h3 style="color: rgb(95, 230, 255);">Standard Service Hours</h3>
+<p><strong>10:00 AM–10:00 PM.</strong></p>
+<p>Time after 10:00 PM is available only when agreed upon and scheduling allows. Approved service after 10:00 PM is billed at <strong>1.5× the normal hourly service rate.</strong></p>
+</article>
+<article class="service-card canva-card" style="background: rgb(17, 10, 36);">
+<h3 style="color: rgb(255, 95, 168);">Setup Access for Full DJ Service</h3>
+<p>When I am providing the sound system, please allow access to the event space <strong>at least two hours before the scheduled music start time.</strong></p>
+<p>This is an access/setup window, not a guaranteed exact arrival time. It gives room to unload, coordinate with the venue, test the system and handle unexpected adjustments without rushing your event.</p>
+</article>
+<article class="service-card wide cyan canva-card" style="background: rgb(17, 10, 36);">
+<h3 style="color: rgb(95, 230, 255);">Service Area &amp; Larger Events</h3>
+<p><strong>Local service area:</strong> Warren County and nearby communities, with no additional travel fee for standard local bookings. Travel beyond the local service area is quoted based on distance and event needs.</p>
+<p><strong>100+ guests and weddings:</strong> please call so we can talk about the room, sound coverage, equipment and crew support the event deserves.</p>
+</article>
+</div>
+</div>
+</section>
+<section aria-labelledby="fundraiser-title" class="content-section fundraiser-section" id="fundraisers">
+<div class="site-wrap">
+<div class="fundraiser-panel">
+<div class="fundraiser-copy">
+<div class="fundraiser-eyebrow">Community support</div>
+<h2 class="section-heading" id="fundraiser-title">Fundraisers &amp; Volunteer Support</h2>
+<p>Community fundraisers have always been important to DJ-Jelley Entertainment. When my schedule allows, I’m happy to volunteer my time to help support a fundraiser — and that help doesn’t necessarily have to begin on event day.</p>
+<p>With enough advance notice, I may also be available to attend planning meetings and offer practical input on music, sound, event flow, setup, and other details before guests ever arrive.</p>
+<p>If I’m available, I look forward to helping wherever I can — from planning and setup to audio support, DJ services, and the event itself.</p>
+<p><strong>Volunteer opportunities are generally easiest for me to accommodate Monday through Thursday.</strong> Friday through Sunday requests are still welcome and are considered based on availability, season, and the event.</p>
+<div class="volunteer-note"><strong>Volunteer paperwork required.</strong> For any volunteer involvement, including planning meetings, I require official volunteer paperwork from the organization.</div>
+</div>
+<aside aria-label="Ways DJ-Jelley Entertainment may help with fundraisers" class="fundraiser-help">
+<h3>Ways I may be able to help</h3>
+<ul class="service-list">
+<li>Planning meetings &amp; practical event advice</li>
+<li>Music, sound &amp; event-flow planning</li>
+<li>Setup and event-day support</li>
+<li>DJ and live-audio support</li>
+</ul>
+<a class="action-button ghost" href="#book">Talk about a fundraiser</a>
+</aside>
+</div>
+</div>
+</section>
+<section aria-labelledby="tech-heading" class="content-section tech-section canva-section" data-template-id="tech-section" id="tech" style="background: linear-gradient(120deg, rgba(95, 230, 255, 0.12), rgba(255, 95, 168, 0.12));">
+<div class="site-wrap">
+<h2 class="section-heading" id="tech-heading">Practical <span class="tech-heading-highlight canva-text" data-template-id="tech-title-highlight" style="color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">tech support</span></h2>
+<p class="section-intro canva-text" data-template-id="tech-intro" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">Things go sideways at events. The show keeps moving because there's a backup and someone who knows how to fix it.</p>
+<div class="card-grid"><article class="service-card wide cyan canva-card" style="background: rgb(17, 10, 36);">
+<h3 style="color: rgb(95, 230, 255);">Free Initial Assessment</h3>
+<p>When our schedules line up, I may be able to stop by and take a first look at a home or venue audio setup at no charge. That can include listening to the system, checking basic compatibility and talking through what the equipment is doing.</p>
+<p><strong>The assessment does not reserve a service date.</strong> If the visit becomes hands-on troubleshooting, repair, routing, configuration or cable tracing, I will explain the paid scope and expected time before continuing at the Audio Technician rate.</p>
+</article>
+<article class="service-card cyan canva-card" data-template-id="playback-card" style="background: rgb(17, 10, 36);">
+<h3 class="canva-text" data-template-id="playback-card-title" style="color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 25px;">Playback, any way you have it</h3>
+<ul class="service-list canva-list">
+<li class="canva-text" data-template-id="playback-item-1" style="font-weight: 400; font-style: normal; font-size: 17px;">Bluetooth</li>
+<li class="canva-text" data-template-id="playback-item-2" style="font-weight: 400; font-style: normal; font-size: 17px;">USB and flash drive</li>
+<li class="canva-text" data-template-id="playback-item-3" style="font-weight: 400; font-style: normal; font-size: 17px;">CD</li>
+<li class="canva-text" data-template-id="playback-item-4" style="font-weight: 400; font-style: normal; font-size: 17px;">Backup media options</li>
+</ul>
+</article>
+<article class="service-card cyan canva-card" data-template-id="spot-card" style="background: rgb(17, 10, 36);">
+<h3 class="canva-text" data-template-id="spot-card-title" style="color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 25px;">On the spot</h3>
+<p class="canva-text" data-template-id="spot-card-copy" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">Troubleshooting while the event is running, so a dead mic or a dropped connection doesn't stop the night.</p>
+</article>
+<article class="service-card wide canva-card" style="background: rgb(17, 10, 36);">
+<h3 style="color: rgb(255, 95, 168); font-weight: 800; font-size: 25px;">Hands-on Live Audio Experience</h3>
+<p class="dj-card-intro">My live-audio experience comes from working real events in very different environments. I’ve handled unscripted open-mic situations, supported theater and production audio, and worked sound in organized school and community settings.</p>
+<div class="dj-focus-grid">
+<div class="dj-focus">
+<h4>Open Mic &amp; Unscripted Events</h4>
+<p>Open mic keeps you on your toes because not everything is planned. Performers may handle microphones differently, unexpected pops or feedback can happen, and problems need to be caught before they interrupt the room.</p>
+<p>That means watching microphones and levels, muting when needed, correcting feedback quickly, and helping direct people on stage when the audio setup needs a little guidance.</p>
+</div>
+<div class="dj-focus cyan-focus">
+<h4>Theater &amp; Production Audio</h4>
+<p>Theater audio is a different discipline: preparation comes first. My experience includes microphone setup, cable organization, labeling, checking that equipment is powered and ready, and waiting for the cue just like the rest of the production team.</p>
+<p>Those two environments taught me both sides of event audio: how to prepare carefully when everything is planned, and how to react quickly when it isn’t.</p>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section aria-labelledby="availability-title" class="content-section canva-section" id="availability" style="background: rgb(7, 3, 15);">
+<div class="site-wrap">
+<h2 class="section-heading" id="availability-title" style="color: rgb(244, 240, 255); font-weight: 800; font-size: 26px;">Check My Availability</h2>
+<p class="section-intro" style="color: rgb(231, 225, 240); font-weight: 400; font-size: 17px;"><strong>Busy dates are already reserved.</strong> An open date does not guarantee availability — contact me to confirm your event before making plans around the calendar.</p>
+<div class="calendar-shell">
+<iframe loading="lazy" src="https://calendar.google.com/calendar/embed?height=680&amp;wkst=1&amp;ctz=America%2FNew_York&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTitle=0&amp;showNav=1&amp;mode=MONTH&amp;src=djjelleyentertainment%40gmail.com" title="DJ-Jelley Entertainment public availability calendar"></iframe>
+</div>
+<div class="availability-note"><strong>Privacy first:</strong> this calendar is for availability only. Client names, event details, locations and payment information are not intended for public display.</div>
+<div class="hero-actions" style="margin-top: 1.25rem;">
+<a class="action-button ghost" href="https://calendar.google.com/calendar/embed?src=djjelleyentertainment%40gmail.com&amp;ctz=America%2FNew_York&amp;mode=MONTH" rel="noopener noreferrer" target="_blank">Open calendar in a new window</a>
+<a class="action-button" href="#book">Ask about your date</a>
+</div>
+</div>
+</section><section aria-labelledby="booking-title" class="content-section canva-section" data-template-id="booking-section" id="book" style="background: rgb(7, 3, 15);">
+<div class="site-wrap">
+<div class="booking-panel canva-panel" data-template-id="booking-panel" style="background: rgb(17, 10, 36);">
+<div class="booking-copy">
+<img alt="DJ-Jelley pink jellyfish logo" class="booking-mark canva-image" data-template-id="booking-logo" loading="lazy" src="dj-jelley-logo.png"/>
+<h2 class="section-heading canva-text" data-template-id="booking-title" id="booking-title" style="color: rgb(244, 240, 255); font-weight: 800; font-style: normal; font-size: 26px;">Book your event</h2>
+<p class="section-intro canva-text" data-template-id="booking-intro" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">Check the availability calendar, then call, text or FaceTime to confirm the date, service level, setup and what your event needs.</p><a class="booking-phone canva-link" data-template-id="booking-phone" href="tel:+15183210643" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 17px;">(518) 321-0643</a>
+<div class="contact-actions"><a class="action-button canva-button" data-template-id="booking-call" href="tel:+15183210643" style="background: rgb(255, 95, 168); color: rgb(7, 3, 15); font-weight: 800; font-style: normal; font-size: 17px;">Call</a> <a class="action-button ghost canva-button" data-template-id="booking-text" href="sms:+15183210643" style="background: transparent; color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">Text</a> <a class="action-button ghost canva-button" data-template-id="booking-facetime" href="facetime:+15183210643" style="background: transparent; color: rgb(95, 230, 255); font-weight: 800; font-style: normal; font-size: 17px;">FaceTime</a>
+</div>
+</div>
+<form class="quote-form" id="quote-form" novalidate=""><label class="form-label" for="quote-name"> <span class="canva-text" data-template-id="name-label" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Your name</span> <input autocomplete="name" class="canva-input" data-template-id="name-input" id="quote-name" name="name" placeholder="Enter your name" required="" style="background: rgb(10, 6, 22); color: rgb(244, 240, 255); font-weight: 400; font-style: normal; font-size: 17px;" type="text"/> </label> <label class="form-label" for="quote-need"> <span class="canva-text" data-template-id="need-label" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">What do you need?</span> <select id="quote-need" name="need"><option value="Audio Technician — $40/hr">Audio Technician — $40/hr</option><option value="House-PA / Venue DJ — $50/hr">House-PA / Venue DJ — $50/hr</option><option value="Full DJ Service — $100/hr">Full DJ Service — $100/hr</option><option value="100+ guests / wedding">100+ guests / wedding</option><option value="Fundraiser / volunteer support">Fundraiser / volunteer support</option><option value="Not sure yet">Not sure yet</option></select> </label> <label class="form-label" for="quote-date"> <span class="canva-text" data-template-id="date-label" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Event date</span> <input class="canva-input" data-template-id="date-input" id="quote-date" name="date" placeholder="e.g. Oct 18" style="background: rgb(10, 6, 22); color: rgb(244, 240, 255); font-weight: 400; font-style: normal; font-size: 17px;" type="text"/> </label> <label class="form-label" for="quote-length"> <span class="canva-text" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Estimated event length</span> <input class="canva-input" id="quote-length" name="length" placeholder="e.g. 3 hours" style="background: rgb(10, 6, 22); color: rgb(244, 240, 255); font-weight: 400; font-style: normal; font-size: 17px;" type="text"/> </label> <label class="form-label" for="quote-details"> <span class="canva-text" data-template-id="details-label" style="color: rgb(231, 225, 240); font-weight: 600; font-style: normal; font-size: 17px;">Details</span> <textarea class="canva-input" data-template-id="details-input" id="quote-details" name="details" placeholder="Type of event, rough guest count, venue" style="background: rgb(10, 6, 22); color: rgb(244, 240, 255); font-weight: 400; font-style: normal; font-size: 17px;"></textarea> </label> <button class="action-button canva-button" data-template-id="submit-button" style="background: rgb(255, 95, 168); color: rgb(7, 3, 15); font-weight: 800; font-style: normal; font-size: 17px;" type="submit">Text my request</button>
+<p class="form-note canva-text" data-template-id="form-note" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">This opens your messaging app with everything filled in. Nothing is sent until you press send. A date is not reserved until the $100 reservation fee is completed.</p>
+<p aria-live="polite" class="form-status" id="form-status" role="status"></p>
+</form>
+</div>
+</div>
+</section>
+</main>
+<section aria-labelledby="connect-title" class="connect-section" id="connect">
+<div class="site-wrap">
+<div class="connect-grid">
+<div class="connect-card">
+<div class="connect-eyebrow">Follow what’s new</div>
+<h2 id="connect-title">Stay connected with DJ-Jelley Entertainment</h2>
+<p>DJ-Jelley Entertainment is growing, and Facebook and Instagram are where I’ll be sharing updates, event moments, visuals, music, and what’s coming next.</p>
+<div class="social-actions">
+<a aria-label="DJ-Jelley Entertainment on Facebook" class="social-link" href="https://www.facebook.com/profile.php?id=61594600844757" rel="noopener noreferrer" target="_blank">Facebook</a>
+<a aria-label="DJ-Jelley Entertainment on Instagram" class="social-link instagram" href="https://www.instagram.com/djjelleyentertainment" rel="noopener noreferrer" target="_blank">Instagram</a>
+</div>
+</div>
+<div class="connect-card streaming-soon">
+<div class="coming-soon-pill">Coming soon</div>
+<h3>Streaming</h3>
+<p>Streaming is part of the next stage for DJ-Jelley Entertainment. I’m still finishing the business and technical setup so I can launch it the right way.</p>
+<p><strong>We look forward to seeing you there.</strong></p>
+</div>
+</div>
+</div>
+</section>
+<footer class="site-footer canva-footer" data-template-id="site-footer" style="background: rgb(7, 3, 15); color: rgb(231, 225, 240);">
+<div class="site-wrap"><strong class="footer-brand canva-text" data-template-id="footer-brand" style="color: rgb(255, 95, 168); font-weight: 800; font-style: normal; font-size: 17px;">DJ-Jelley Entertainment</strong> <span aria-hidden="true"> · </span> <span class="canva-text" data-template-id="footer-services" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">DJ · Audio Technician · Live Sound · Event Audio · Streaming Coming Soon</span> <br/><span class="canva-text" data-template-id="footer-phone" style="color: rgb(231, 225, 240); font-weight: 400; font-style: normal; font-size: 17px;">(518) 321-0643</span>
+</div>
+</footer>
+<script>
+    (function () {
+      const quoteForm = document.getElementById("quote-form");
+      const nameInput = document.getElementById("quote-name");
+      const status = document.getElementById("form-status");
+
+      function showStatus(message, isError) {
+        status.textContent = message;
+        status.classList.add("is-visible");
+        status.classList.toggle("is-error", Boolean(isError));
+      }
+
+      quoteForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (!nameInput.value.trim()) {
+          nameInput.focus();
+          showStatus("Please enter your name before opening your text message.", true);
+          return;
+        }
+
+        const formData = new FormData(quoteForm);
+        const name = formData.get("name").trim();
+        const need = formData.get("need");
+        const date = formData.get("date").trim();
+        const length = formData.get("length").trim();
+        const details = formData.get("details").trim();
+
+        let message = "Hi DJ-Jelley, this is " + name + ". I need: " + need + ".";
+        if (date) message += " Date: " + date + ".";
+        if (length) message += " Estimated length: " + length + ".";
+        if (details) message += " Details: " + details;
+
+        const smsUrl = "sms:+15183210643?&body=" + encodeURIComponent(message);
+        const openedWindow = window.open(smsUrl, "_blank");
+
+        if (!openedWindow) {
+          showStatus("Your messaging app could not be opened here. Please text (518) 321-0643 and paste your request.", true);
+        } else {
+          showStatus("Your messaging app is opening with your request filled in.");
+        }
+      });
+    })();
+  </script>
+</body></html>
